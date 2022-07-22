@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>page produit</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" 
+integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" 
+crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<div  th:replace="~{fragments/navigation :: navigation}"></div>
+<p></p>
+<div class="container">
+	<div class="">
+		<div class="card-header"> Conformation:</div>
+		<div class="card-body">
+		
+					<div class="form-group">
+					<label class="control-label">ID :</label>
+					<label th:text="${produit.id}" ></label>
+					</div>
+					
+					<div class="form-group">
+					<label class="control-label">Designation :</label>
+					<label th:text="${produit.designation}" ></label>
+					</div>
+					
+					<div class="form-group">
+					<label class="control-label">Prix :</label>
+					<label th:text="${produit.prix}" ></label>
+					</div>
+					
+					<div class="form-group">
+					<label class="control-label">Quantity :</label>
+					<label th:text="${produit.quantites}" ></label>
+					</div>
+			
+		</div>
+	</div>
+</div>
+
+<div  th:replace="~{fragments/footer :: navigation}"></div>
+</body>
+</html>

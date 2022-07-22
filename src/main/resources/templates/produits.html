@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+<meta charset="utf-8"/>
+<title>page produit</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" 
+integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" 
+crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+<!--  
+<link rel="stylesheet" href="../static/cc  "
+	th:href="@{css/bootstrap.min.css}"
+/>
+-->
+<link rel="stylesheet" href="../static/css/personnel.css "
+	th:href="@{css/personnel.css}"
+/>
+</head>
+<body>
+<div  th:replace="~{fragments/navigation :: navigation}"></div>
+<div class="container">
+<p></p>
+<div class="container" >
+	<form th:action="@{index}" method="get">
+		<label>Mot clé</label>
+		<input  type="text" name="mc" th:value="${mc}" />
+		<button  class="btn btn-primary"> Chercher</button>
+	</form>
+</div>
+<div class="container">
+<h2>les produits</h2>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>ID</th><th>Désignation</th><th>Prix</th><th>quantities</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="p:${listProduit}">
+				<td th:text="${p.id}"></td>
+				<td th:text="${p.designation}"></td>
+				<td th:text="${p.prix}"></td>
+				<td th:text="${p.quantites}"></td>
+				<td sec:authorize="hasRole('ADMIN')"  class="btn btn-info"> <a th:href="@{edit(id=${p.id},page=${pageCourant},size=${size},mc=${mc})}">Edit</a> </td>
+				<td sec:authorize="hasRole('ADMIN')" class="btn btn-danger bbtn"> <a onclick="return confirm('vous etes sur!')" th:href="@{delete(id=${p.id},page=${pageCourant},size=${size},mc=${mc})}">Delete</a> </td>
+				
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div class="container"><!-- 
+<ul class="nav nav-pills">
+		<li th:class="${pageCourant}==${status.index}?'active':''" th:each="p,status:${pages} " >
+			<a th:href= "@{index(page=${status.index},size=${size})}" th:text="${status.index}"></a>
+		</li>
+	</ul>
+ -->
+  <!--
+	<ul class="pagination">
+		<li th:class="${pageCourant}==${status.count}?'page-item active':'page-item'" th:each="p,status:${pages} " >
+			<a  th:href= "@{index(page=${status.count},size=${size},mc=${mc})}" class="page-link" th:text="${status.count}"></a>
+			
+		</li>
+	</ul>
+	  -->
+	 	<ul class="pagination">
+		<li th:class="${pageCourant}==${status.index}?'page-item active':'page-item'" th:each="p,status:${pages} " >
+			<a  th:href= "@{index(page=${status.index},size=${size},mc=${mc})}" class="page-link" th:text="${status.index}"></a>
+			
+		</li>
+	</ul> 
+</div>
+</div>
+
+
+<div  th:replace="~{fragments/footer :: navigation}"></div>
+</body>
+</html>

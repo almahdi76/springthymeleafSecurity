@@ -1,0 +1,17 @@
+
+.red{
+	color:red;
+}
+body{
+	background-color:#e6e6e6;
+}
+.espacer{
+	margin-top:20px
+}
+.bbtn{
+	text-decoration: none;
+}
+
+.bbtn:visited {
+  text-decoration: none;
+}
